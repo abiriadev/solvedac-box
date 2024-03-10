@@ -26,6 +26,6 @@ func fetchUserData(username string) (User, error) {
 		return user, err
 	}
 
-	json.NewDecoder(res.Body).Decode(&user)
-	return user, nil
+	err = json.NewDecoder(res.Body).Decode(&user)
+	return user, err
 }
