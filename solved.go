@@ -6,17 +6,17 @@ import (
 )
 
 type User struct {
-	handle            string
-	bio               string
-	solvedCount       int
-	voteCount         int
-	tier              int
-	rating            int
-	class             int
-	classDecoration   string
-	rivalCount        int
-	reverseRivalCount int
-	rank              int
+	Handle            string `json:"handle"`
+	Bio               string `json:"bio"`
+	SolvedCount       int    `json:"solvedCount"`
+	VoteCount         int    `json:"voteCount"`
+	Tier              int    `json:"tier"`
+	Rating            int    `json:"rating"`
+	Class             int    `json:"class"`
+	ClassDecoration   string `json:"classDecoration"`
+	RivalCount        int    `json:"rivalCount"`
+	ReverseRivalCount int    `json:"reverseRivalCount"`
+	Rank              int    `json:"rank"`
 }
 
 func fetchUserData(username string) (User, error) {
