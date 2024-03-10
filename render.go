@@ -5,11 +5,11 @@ import (
 	"text/template"
 )
 
-var gistTemplate = ``
+var gistTemplate = "gist.tmpl"
 
 func renderGist(user User) (string, error) {
 	var buf strings.Builder
-	if tmpl, err := template.New("gist").Parse(gistTemplate); err != nil {
+	if tmpl, err := template.New("gist").ParseFiles(gistTemplate); err != nil {
 		return "", err
 	} else if err := tmpl.Execute(&buf, user); err != nil {
 		return "", err
