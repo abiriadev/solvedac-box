@@ -25,5 +25,5 @@
 
 [![GitHub](https://img.shields.io/github/license/abiriadev/pia?color=17ce3a&style=for-the-badge)](./LICENSE)
 
-<small>Special thanks to [BOJ](https://www.acmicpc.net/) and @solved-ac</small>
+_<sub>Special thanks to [BOJ](https://www.acmicpc.net/) and @solved-ac</sub>_
 
