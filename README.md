@@ -1,7 +1,7 @@
 <h1 align="center">Solved.ac Box</h1>
 
 <p align="center">
-  📊 [Solved.ac](https://solved.ac)의 프로필 정보를 GitHub Gist로 보여주는 GitHub Action 📊
+  📊 <a href="https://solved.ac">Solved.ac</a>의 프로필 정보를 GitHub Gist로 보여주는 GitHub Action 📊
 </p>
 
 ## 🎒 사전 준비
