@@ -38,9 +38,9 @@ func (prop GistProp) Render() (string, error) {
 	var buf strings.Builder
 
 	var fl = 53
-	var hl = fl - len(prop.Tier) - len(prop.Handle)
+	var hl = fl - 6 - len(prop.Rank) - len(prop.Handle)
 
-	res := fmt.Sprintf("%c %s #%*s @%s", prop.TierEmoji, prop.Tier, hl, prop.Rank, prop.Handle)
+	res := fmt.Sprintf("%c %-*s #%s @%s", prop.TierEmoji, hl, prop.Tier, prop.Rank, prop.Handle)
 	buf.WriteString(res)
 
 	return buf.String(), nil
