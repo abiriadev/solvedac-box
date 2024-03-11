@@ -28,7 +28,8 @@ func (user User) Render() (string, error) {
 	buf.WriteString(res)
 	buf.WriteString(user.Bio + "\n")
 	pbl := gistWidth - runewidth.StringWidth(rating) - 1
-	pb := drawProgressBar(pbl, 0.8)
+	percentage := float64(user.Rating) / float64(tierPercentageMap[user.Tier])
+	pb := drawProgressBar(pbl, percentage)
 	buf.WriteString(fmt.Sprintf("%s %s", pb, rating))
 
 	return buf.String(), nil
