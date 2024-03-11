@@ -19,30 +19,25 @@ type GistProp struct {
 	Rank      string
 }
 
-func NewGistPropFromUser(user User) (GistProp, error) {
-	emoji, err := TierToEmoji(user.Tier)
-	if err != nil {
-		return GistProp{}, err
-	}
+var GistWidth = 53
 
-	return GistProp{
-		Handle:    user.Handle,
-		Bio:       user.Bio,
-		Tier:      TierMap[user.Tier],
-		TierEmoji: emoji,
-		Rating:    humanize.Comma(int64(user.Rating)),
-		Rank:      humanize.Comma(int64(user.Rank)),
-	}, nil
-}
-
-func (prop GistProp) Render() (string, error) {
+func (user User) Render() (string, error) {
 	var buf strings.Builder
 
-	var fl = 53
-	var hl = fl - runewidth.StringWidth(string(prop.TierEmoji)) - 4 - runewidth.StringWidth(prop.Rank) - runewidth.StringWidth(prop.Handle)
+	emoji, err := TierToEmoji(user.Tier)
+	if err != nil {
+		return buf.String(), err
+	}
 
-	res := fmt.Sprintf("%c %-*s#%s @%s", prop.TierEmoji, hl, prop.Tier, prop.Rank, prop.Handle)
+	tier := TierMap[user.Tier]
+	rating := humanize.Comma(int64(user.Rating))
+	rank := humanize.Comma(int64(user.Rank))
+
+	var hl = GistWidth - runewidth.StringWidth(string(emoji)) - 4 - runewidth.StringWidth(rank) - runewidth.StringWidth(user.Handle)
+
+	res := fmt.Sprintf("%c %-*s#%s @%s\n", emoji, hl, tier, rank, user.Handle)
 	buf.WriteString(res)
+	buf.WriteString(user.Bio + "\n")
 
 	return buf.String(), nil
 }
