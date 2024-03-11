@@ -1,8 +1,7 @@
 package main
 
 import (
-	"encoding/json"
-	"net/http"
+	"errors"
 )
 
 type User struct {
@@ -25,12 +24,16 @@ var solvedacUserShowApi = solvedacApiEndpoint + "/user/show"
 func (client *BoxClient) FetchUserData(username string) (User, error) {
 	var user User
 
-	client.req.R().SetQueryParam("handle", username).Get(solvedacUserShowApi)
-	res, err := http.Get("" + username)
+	res, err := client.req.R().SetQueryParam("handle", username).
+		SetSuccessResult(&user).
+		Get(solvedacUserShowApi)
 	if err != nil {
 		return user, err
 	}
 
-	err = json.NewDecoder(res.Body).Decode(&user)
-	return user, err
+	if res.IsSuccessState() {
+		return user, nil
+	} else {
+		return user, errors.New("http response was not successful")
+	}
 }
