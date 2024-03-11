@@ -6,16 +6,6 @@ import (
 	"github.com/google/go-github/v60/github"
 )
 
-type GistClient struct {
-	client github.Client
-}
-
-func NewGistClient(token string) GistClient {
-	return GistClient{
-		client: *github.NewClient(nil).WithAuthToken(token),
-	}
-}
-
 func (client *GistClient) UpdateGist(id, filename, content string) error {
 	ctx := context.Background()
 
