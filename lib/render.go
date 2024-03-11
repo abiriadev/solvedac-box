@@ -22,7 +22,13 @@ func (user User) Render() (string, error) {
 	rating := humanize.Comma(int64(user.Rating))
 	rank := humanize.Comma(int64(user.Rank))
 
-	var hl = gistWidth - runewidth.StringWidth(string(emoji)) - 4 - runewidth.StringWidth(rank) - runewidth.StringWidth(user.Handle)
+	var hl = gistWidth -
+		runewidth.StringWidth(
+			string(emoji),
+		) -
+		4 -
+		runewidth.StringWidth(rank) -
+		runewidth.StringWidth(user.Handle)
 
 	res := fmt.Sprintf("%c %-*s#%s @%s\n", emoji, hl, tier, rank, user.Handle)
 	buf.WriteString(res)
@@ -30,7 +36,17 @@ func (user User) Render() (string, error) {
 	pbl := gistWidth - runewidth.StringWidth(rating) - 1
 	percentage := ratingToPercentage(user.Rating, user.Tier)
 	pb := drawProgressBar(pbl, percentage)
-	buf.WriteString(fmt.Sprintf("%s %s", pb, rating))
+	buf.WriteString(fmt.Sprintf("%s %s\n", pb, rating))
+	half := (gistWidth - 1) / 2
+	buf.WriteString(
+		fmt.Sprint(
+			"Solved: %*s Class: %*s\n",
+			half-8,
+			humanize.Comma(int64(user.SolvedCount)),
+			half-7,
+			humanize.Comma(int64(user.Class)),
+		),
+	)
 
 	return buf.String(), nil
 }
