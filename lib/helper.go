@@ -41,6 +41,7 @@ var tierMap = []string{
 }
 
 var tierPercentageMap = []int{
+	0,                    // unrated
 	30, 60, 90, 120, 150, // bronze
 	200, 300, 400, 500, 650, // silver
 	800, 950, 1100, 1250, 1400, // gold
@@ -70,6 +71,20 @@ func tierToEmoji(tier int) (rune, error) {
 	} else {
 		return 0, errors.New("tier out of range")
 	}
+}
+
+func ratingToPercentage(rating int, tier int) float64 {
+	// master progress is always 100%
+	if tier == 31 {
+		return 1
+	}
+
+	base := tierPercentageMap[tier]
+	next := tierPercentageMap[tier+1]
+
+	delta, curr := next-base, rating-base
+
+	return float64(curr) / float64(delta)
 }
 
 var progressBarChars = []rune("░▏▎▍▌▋▊▉█")
