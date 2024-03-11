@@ -1,6 +1,9 @@
 package main
 
-import "errors"
+import (
+	"errors"
+	"strings"
+)
 
 var TierMap = map[int]string{
 	1:  "Bronze V",
@@ -56,4 +59,24 @@ func TierToEmoji(tier int) (rune, error) {
 	} else {
 		return 0, errors.New("tier out of range")
 	}
+}
+
+var ProgressBarChars = []rune("░▏▎▍▌▋▊▉█")
+var semi = 8
+
+func drawProgressBar(size int, frac float64) string {
+	l := int(float64(semi) * frac * float64(size))
+	fl := l / semi
+
+	var buf strings.Builder
+	buf.WriteString(strings.Repeat(string(ProgressBarChars[semi]), min(fl, size)))
+
+	if fl >= size {
+		return buf.String()
+	}
+
+	buf.WriteRune(ProgressBarChars[l%semi])
+	buf.WriteString(strings.Repeat(string(ProgressBarChars[0]), size-fl-1))
+
+	return buf.String()
 }
