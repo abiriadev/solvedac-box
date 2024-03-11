@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	humanize "github.com/dustin/go-humanize"
+	"github.com/mattn/go-runewidth"
 )
 
 var gistTemplate = "gist.tmpl"
@@ -38,9 +39,9 @@ func (prop GistProp) Render() (string, error) {
 	var buf strings.Builder
 
 	var fl = 53
-	var hl = fl - 6 - len(prop.Rank) - len(prop.Handle)
+	var hl = fl - runewidth.StringWidth(string(prop.TierEmoji)) - 4 - runewidth.StringWidth(prop.Rank) - runewidth.StringWidth(prop.Handle)
 
-	res := fmt.Sprintf("%c %-*s #%s @%s", prop.TierEmoji, hl, prop.Tier, prop.Rank, prop.Handle)
+	res := fmt.Sprintf("%c %-*s#%s @%s", prop.TierEmoji, hl, prop.Tier, prop.Rank, prop.Handle)
 	buf.WriteString(res)
 
 	return buf.String(), nil
