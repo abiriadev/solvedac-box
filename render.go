@@ -1,8 +1,8 @@
 package main
 
 import (
+	"fmt"
 	"strings"
-	"text/template"
 
 	humanize "github.com/dustin/go-humanize"
 )
@@ -36,10 +36,12 @@ func NewGistPropFromUser(user User) (GistProp, error) {
 
 func (prop GistProp) Render() (string, error) {
 	var buf strings.Builder
-	if tmpl, err := template.New("gist").ParseFiles(gistTemplate); err != nil {
-		return "", err
-	} else if err := tmpl.Execute(&buf, prop); err != nil {
-		return "", err
-	}
+
+	var fl = 53
+	var hl = fl - len(prop.Tier) - len(prop.Handle)
+
+	res := fmt.Sprintf("%c %s #%*s @%s", prop.TierEmoji, prop.Tier, hl, prop.Rank, prop.Handle)
+	buf.WriteString(res)
+
 	return buf.String(), nil
 }
