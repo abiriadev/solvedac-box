@@ -2,8 +2,8 @@ package main
 
 import (
 	"testing"
-	"unicode/utf8"
 
+	"github.com/mattn/go-runewidth"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -22,6 +22,6 @@ func TestSolvedacRender(t *testing.T) {
 		}
 
 		t.Log(rendered)
-		assert.Equal(53, utf8.RuneCountInString(rendered))
+		assert.Equal(53, runewidth.StringWidth(rendered))
 	}
 }
