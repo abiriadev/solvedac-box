@@ -39,6 +39,16 @@ var tierMap = map[int]string{
 	31: "Master",
 }
 
+var tierPercentageMap = []int{
+	30, 60, 90, 120, 150, // bronze
+	200, 300, 400, 500, 650, // silver
+	800, 950, 1100, 1250, 1400, // gold
+	1600, 1750, 1900, 2000, 2100, // platinum
+	2200, 2300, 2400, 2500, 2600, // diamond
+	2700, 2800, 2850, 2900, 2950, // ruby
+	3000, // master
+}
+
 var tierEmojis = []rune("🟫⬜🟨🟩🟦🟥🟪")
 
 func tierToEmoji(tier int) (rune, error) {
