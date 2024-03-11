@@ -1,0 +1,24 @@
+name: Update Gist
+on:
+  schedule:
+    - cron: 0 6 * * * # when the solved.ac streak updates
+  push:
+    branches:
+      - main
+  # allow user to manually start the action
+  workflow_dispatch:
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Go
+        uses: actions/setup-go@v4
+      - name: Build
+        run: go build -v .
+      - name: Update
+        run: go run .
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GIST_ID: ${{ secrets.GIST_ID }}
+          USERNAME: ${{ secrets.USERNAME }}
