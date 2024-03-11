@@ -38,6 +38,9 @@ func (user User) Render() (string, error) {
 	res := fmt.Sprintf("%c %-*s#%s @%s\n", emoji, hl, tier, rank, user.Handle)
 	buf.WriteString(res)
 	buf.WriteString(user.Bio + "\n")
+	pbl := GistWidth - runewidth.StringWidth(rating) - 1
+	pb := drawProgressBar(pbl, 0.8)
+	buf.WriteString("%s %s", pb, rating)
 
 	return buf.String(), nil
 }
