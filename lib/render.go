@@ -40,19 +40,19 @@ func (user User) Render() (string, error) {
 	half := (gistWidth - 1) / 2
 	buf.WriteString(
 		fmt.Sprintf(
-			"Solved: %*s Class: %*s\n",
-			half-8,
+			"✅ Solved: %*s 💠 Class: %*s\n",
+			half-11,
 			humanize.Comma(int64(user.SolvedCount)),
-			half-7,
+			half-10,
 			humanize.Comma(int64(user.Class)),
 		),
 	)
 	buf.WriteString(
 		fmt.Sprintf(
-			"Contributions: %*s Rivals: %*s\n",
-			half-15,
+			"💡 Contributions: %*s 🔥 Rivals: %*s\n",
+			half-18,
 			humanize.Comma(int64(user.VoteCount)),
-			half-8,
+			half-11,
 			humanize.Comma(int64(user.ReverseRivalCount)),
 		),
 	)
