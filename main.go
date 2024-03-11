@@ -31,7 +31,7 @@ func main() {
 		panic(err)
 	}
 
-	err = client.UpdateGist(config.GistId, "filename", rendered)
+	err = client.UpdateGist(config.GistId, "💯 My Solved.ac Profile", rendered)
 	if err != nil {
 		panic(err)
 	}
