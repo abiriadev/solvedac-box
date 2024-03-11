@@ -7,7 +7,7 @@ import (
 )
 
 func TestSolvedacApi(t *testing.T) {
-	res, err := fetchUserData("abiriadev")
+	res, err := NewBoxClient("").FetchUserData("abiriadev")
 	assert := assert.New(t)
 
 	assert.Nil(err)

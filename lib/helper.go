@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-var TierMap = map[int]string{
+var tierMap = map[int]string{
 	1:  "Bronze V",
 	2:  "Bronze IV",
 	3:  "Bronze III",
@@ -39,29 +39,29 @@ var TierMap = map[int]string{
 	31: "Master",
 }
 
-var TierEmojis = []rune("🟫⬜🟨🟩🟦🟥🟪")
+var tierEmojis = []rune("🟫⬜🟨🟩🟦🟥🟪")
 
-func TierToEmoji(tier int) (rune, error) {
+func tierToEmoji(tier int) (rune, error) {
 	if 0 < tier && tier <= 5 {
-		return TierEmojis[0], nil
+		return tierEmojis[0], nil
 	} else if 5 < tier && tier <= 10 {
-		return TierEmojis[1], nil
+		return tierEmojis[1], nil
 	} else if 10 < tier && tier <= 15 {
-		return TierEmojis[2], nil
+		return tierEmojis[2], nil
 	} else if 15 < tier && tier <= 20 {
-		return TierEmojis[3], nil
+		return tierEmojis[3], nil
 	} else if 20 < tier && tier <= 25 {
-		return TierEmojis[4], nil
+		return tierEmojis[4], nil
 	} else if 25 < tier && tier <= 30 {
-		return TierEmojis[5], nil
+		return tierEmojis[5], nil
 	} else if tier == 31 {
-		return TierEmojis[6], nil
+		return tierEmojis[6], nil
 	} else {
 		return 0, errors.New("tier out of range")
 	}
 }
 
-var ProgressBarChars = []rune("░▏▎▍▌▋▊▉█")
+var progressBarChars = []rune("░▏▎▍▌▋▊▉█")
 var semi = 8
 
 func drawProgressBar(size int, frac float64) string {
@@ -69,14 +69,14 @@ func drawProgressBar(size int, frac float64) string {
 	fl := l / semi
 
 	var buf strings.Builder
-	buf.WriteString(strings.Repeat(string(ProgressBarChars[semi]), min(fl, size)))
+	buf.WriteString(strings.Repeat(string(progressBarChars[semi]), min(fl, size)))
 
 	if fl >= size {
 		return buf.String()
 	}
 
-	buf.WriteRune(ProgressBarChars[l%semi])
-	buf.WriteString(strings.Repeat(string(ProgressBarChars[0]), size-fl-1))
+	buf.WriteRune(progressBarChars[l%semi])
+	buf.WriteString(strings.Repeat(string(progressBarChars[0]), size-fl-1))
 
 	return buf.String()
 }

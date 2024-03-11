@@ -21,7 +21,7 @@ type User struct {
 var solvedacApiEndpoint = "https://solved.ac/api/v3"
 var solvedacUserShowApi = solvedacApiEndpoint + "/user/show"
 
-func (client *BoxClient) FetchUserData(username string) (User, error) {
+func (client BoxClient) FetchUserData(username string) (User, error) {
 	var user User
 
 	res, err := client.req.R().SetQueryParam("handle", username).

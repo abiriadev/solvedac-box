@@ -6,7 +6,7 @@ import (
 	"github.com/google/go-github/v60/github"
 )
 
-func (client *BoxClient) UpdateGist(id, filename, content string) error {
+func (client BoxClient) UpdateGist(id, filename, content string) error {
 	ctx := context.Background()
 
 	gist, _, err := client.ghClient.Gists.Get(ctx, id)

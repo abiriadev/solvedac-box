@@ -7,7 +7,7 @@ import (
 )
 
 func TestSolvedacRender(t *testing.T) {
-	res, err := fetchUserData("cgiosy")
+	res, err := NewBoxClient("").FetchUserData("abiriadev")
 	assert := assert.New(t)
 
 	assert.Nil(err)
