@@ -10,6 +10,12 @@ type GistClient struct {
 	client github.Client
 }
 
+func NewGistClient(token string) GistClient {
+	return GistClient{
+		client: *github.NewClient(nil).WithAuthToken(token),
+	}
+}
+
 func (client GistClient) UpdateGist(id, filename, content string) error {
 	ctx := context.Background()
 
@@ -18,10 +24,13 @@ func (client GistClient) UpdateGist(id, filename, content string) error {
 		return err
 	}
 
-	gFilename := github.GistFilename(filename)
-	f := gist.Files[gFilename]
-	f.Content = &content
-	gist.Files[gFilename] = f
+	for k := range gist.Files {
+		gist.Files[k] = github.GistFile{}
+	}
+
+	gist.Files[github.GistFilename(filename)] = github.GistFile{
+		Content: &content,
+	}
 
 	_, _, err = client.client.Gists.Edit(ctx, id, gist)
 	return err
