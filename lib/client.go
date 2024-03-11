@@ -1,4 +1,4 @@
-package main
+package lib
 
 import (
 	"github.com/google/go-github/v60/github"
