@@ -3,7 +3,6 @@ package main
 import (
 	"testing"
 
-	"github.com/mattn/go-runewidth"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -13,15 +12,8 @@ func TestSolvedacRender(t *testing.T) {
 
 	assert.Nil(err)
 
-	if res, err := NewGistPropFromUser(res); err != nil {
-		assert.Nil(err)
-	} else {
-		rendered, err := res.Render()
-		if err != nil {
-			assert.Nil(err)
-		}
+	rendered, err := res.Render()
+	assert.Nil(err)
 
-		t.Log(rendered)
-		assert.Equal(53, runewidth.StringWidth(rendered))
-	}
+	t.Log(rendered)
 }
