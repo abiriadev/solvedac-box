@@ -3,6 +3,8 @@ package main
 import (
 	"strings"
 	"text/template"
+
+	humanize "github.com/dustin/go-humanize"
 )
 
 var gistTemplate = "gist.tmpl"
@@ -27,8 +29,8 @@ func NewGistPropFromUser(user User) (GistProp, error) {
 		Bio:       user.Bio,
 		Tier:      TierMap[user.Tier],
 		TierEmoji: emoji,
-		Rating:    string(user.Rating),
-		Rank:      string(user.Rank),
+		Rating:    humanize.Comma(user.Rating),
+		Rank:      humanize.Comma(user.Rank),
 	}, nil
 }
 
