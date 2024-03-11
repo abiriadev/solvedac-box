@@ -1,4 +1,4 @@
-<img align="center" src="./assets/box.png" alt="gist box picture" width="500">
+<p align="center"><img src="./assets/box.png" alt="gist box picture" width="500"></p>
 
 <h1 align="center">Solved.ac Box</h1>
 <p align="center">
