@@ -1,7 +1,9 @@
 name: Update Gist
 on:
   schedule:
-    - cron: 0 6 * * * # when the solved.ac streak updates
+    # 21 UTC is equivalent to 6 KST
+    # when the solved.ac streak updates
+    - cron: 0 21 * * *
   push:
     branches:
       - main
