@@ -25,7 +25,7 @@ func NewGistPropFromUser(user User) (GistProp, error) {
 	return GistProp{
 		Handle:    user.Handle,
 		Bio:       user.Bio,
-		Tier:      string(user.Tier),
+		Tier:      TierMap[user.Tier],
 		TierEmoji: emoji,
 		Rating:    string(user.Rating),
 		Rank:      string(user.Rank),
