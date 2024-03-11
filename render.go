@@ -29,8 +29,8 @@ func NewGistPropFromUser(user User) (GistProp, error) {
 		Bio:       user.Bio,
 		Tier:      TierMap[user.Tier],
 		TierEmoji: emoji,
-		Rating:    humanize.Comma(user.Rating),
-		Rank:      humanize.Comma(user.Rank),
+		Rating:    humanize.Comma(int64(user.Rating)),
+		Rank:      humanize.Comma(int64(user.Rank)),
 	}, nil
 }
 
