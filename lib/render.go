@@ -12,7 +12,12 @@ var gistWidth = 53
 
 func renderField(field string, num int, width int) string {
 	fl := runewidth.StringWidth(field)
-	return fmt.Sprintf("%s%*s", field, width-fl, humanize.Comma(int64(num)))
+	return fmt.Sprintf(
+		"%s%*s",
+		field,
+		width-fl,
+		humanize.Comma(int64(num)),
+	)
 }
 
 func (user User) Render() (string, error) {
