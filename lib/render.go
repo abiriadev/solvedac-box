@@ -39,7 +39,7 @@ func (user User) Render() (string, error) {
 	buf.WriteString(fmt.Sprintf("%s %s\n", pb, rating))
 	half := (gistWidth - 1) / 2
 	buf.WriteString(
-		fmt.Sprint(
+		fmt.Sprintf(
 			"Solved: %*s Class: %*s\n",
 			half-8,
 			humanize.Comma(int64(user.SolvedCount)),
@@ -48,7 +48,7 @@ func (user User) Render() (string, error) {
 		),
 	)
 	buf.WriteString(
-		fmt.Sprint(
+		fmt.Sprintf(
 			"Contributions: %*s Rivals: %*s\n",
 			half-16,
 			humanize.Comma(int64(user.VoteCount)),
