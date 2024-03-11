@@ -19,9 +19,14 @@ type User struct {
 	Rank              int    `json:"rank"`
 }
 
-func fetchUserData(username string) (User, error) {
+var solvedacApiEndpoint = "https://solved.ac/api/v3"
+var solvedacUserShowApi = solvedacApiEndpoint + "/user/show"
+
+func (client *BoxClient) FetchUserData(username string) (User, error) {
 	var user User
-	res, err := http.Get("https://solved.ac/api/v3/user/show?handle=" + username)
+
+	client.req.R().SetQueryParam("handle", username).Get(solvedacUserShowApi)
+	res, err := http.Get("" + username)
 	if err != nil {
 		return user, err
 	}
