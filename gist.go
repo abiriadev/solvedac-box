@@ -16,7 +16,7 @@ func NewGistClient(token string) GistClient {
 	}
 }
 
-func (client GistClient) UpdateGist(id, filename, content string) error {
+func (client *GistClient) UpdateGist(id, filename, content string) error {
 	ctx := context.Background()
 
 	gist, _, err := client.client.Gists.Get(ctx, id)
