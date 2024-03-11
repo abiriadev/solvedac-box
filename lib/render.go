@@ -10,6 +10,11 @@ import (
 
 var gistWidth = 53
 
+func renderField(field string, num int, width int) string {
+	fl := runewidth.StringWidth(field)
+	return fmt.Sprintf("%s%*s", field, width-fl, humanize.Comma(int64(num)))
+}
+
 func (user User) Render() (string, error) {
 	var buf strings.Builder
 
@@ -37,23 +42,14 @@ func (user User) Render() (string, error) {
 	percentage := ratingToPercentage(user.Rating, user.Tier)
 	pb := drawProgressBar(pbl, percentage)
 	buf.WriteString(fmt.Sprintf("%s %s\n", pb, rating))
-	half := (gistWidth - 1) / 2
+
+	half := (gistWidth-1)/2 - 2
 	buf.WriteString(
-		fmt.Sprintf(
-			"✅ Solved: %*s 💠 Class: %*s\n",
-			half-11,
-			humanize.Comma(int64(user.SolvedCount)),
-			half-10,
-			humanize.Comma(int64(user.Class)),
-		),
-	)
-	buf.WriteString(
-		fmt.Sprintf(
-			"💡 Contributions: %*s 🔥 Rivals: %*s\n",
-			half-18,
-			humanize.Comma(int64(user.VoteCount)),
-			half-11,
-			humanize.Comma(int64(user.ReverseRivalCount)),
+		fmt.Sprintf("%s     %s\n%s     %s\n",
+			renderField("✅ Solved: ", user.SolvedCount, half),
+			renderField("💠 Class: ", user.Class, half),
+			renderField("💡 Contributions: ", user.VoteCount, half),
+			renderField("🔥 Rivals: ", user.ReverseRivalCount, half),
 		),
 	)
 
