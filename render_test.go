@@ -2,6 +2,7 @@ package main
 
 import (
 	"testing"
+	"unicode/utf8"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -21,6 +22,6 @@ func TestSolvedacRender(t *testing.T) {
 		}
 
 		t.Log(rendered)
-		assert.Equal(len(rendered), 53)
+		assert.Equal(53, utf8.RuneCountInString(rendered))
 	}
 }
