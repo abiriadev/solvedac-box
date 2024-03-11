@@ -15,6 +15,8 @@
 
 1. [본 저장소를 포크](https://github.com/abiriadev/solvedac-box/fork)합니다.
 2. `Settings` > `Secrets and variables` > `Actions` 로 들어가 `New repository secret`을 눌러 다음 정보를 시크릿으로 추가합니다.
+3. `Actions` > `Update Gist` 로 들어가 `Run workflow` > `Run workflow` 버튼을 클릭!
+4. Gist가 업데이트 된 후 자신의 GitHub 프로필에 핀하면 완료!
 
 ## 🤫 환경변수 설정
 
@@ -26,5 +28,5 @@
 
 [![GitHub](https://img.shields.io/github/license/abiriadev/pia?color=17ce3a&style=for-the-badge)](./LICENSE)
 
-_<sub>Special thanks to [BOJ](https://www.acmicpc.net/) and @solved-ac</sub>_
+_<sub>Special thanks to [BOJ](https://www.acmicpc.net/) and [@solved-ac](https://github.com/solved-ac)</sub>_
 
