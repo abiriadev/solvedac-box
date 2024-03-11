@@ -50,7 +50,7 @@ func (user User) Render() (string, error) {
 	buf.WriteString(
 		fmt.Sprintf(
 			"Contributions: %*s Rivals: %*s\n",
-			half-16,
+			half-15,
 			humanize.Comma(int64(user.VoteCount)),
 			half-8,
 			humanize.Comma(int64(user.ReverseRivalCount)),
