@@ -22,8 +22,16 @@ func main() {
 	)
 
 	res, err := client.FetchUserData(config.Username)
+	if err != nil {
+		panic(err)
+	}
 
-	err = client.UpdateGist(config.GistId, "filename", res)
+	rendered, err := res.Render()
+	if err != nil {
+		panic(err)
+	}
+
+	err = client.UpdateGist(config.GistId, "filename", rendered)
 	if err != nil {
 		panic(err)
 	}
