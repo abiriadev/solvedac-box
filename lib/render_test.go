@@ -4,6 +4,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/mattn/go-runewidth"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -25,6 +26,7 @@ func TestUserRender(t *testing.T) {
 
 	lines := strings.Split(rendered, "\n")
 
+	assert.Equal(53, runewidth.StringWidth(lines[0]))
 	assert.Equal("hello, world!", lines[1])
 
 	t.Log(rendered)
