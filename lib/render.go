@@ -47,6 +47,15 @@ func (user User) Render() (string, error) {
 			humanize.Comma(int64(user.Class)),
 		),
 	)
+	buf.WriteString(
+		fmt.Sprint(
+			"Contributions: %*s Rivals: %*s\n",
+			half-16,
+			humanize.Comma(int64(user.VoteCount)),
+			half-8,
+			humanize.Comma(int64(user.ReverseRivalCount)),
+		),
+	)
 
 	return buf.String(), nil
 }
