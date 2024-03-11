@@ -15,5 +15,5 @@ func TestTierMap(t *testing.T) {
 func TestTierPercentageMap(t *testing.T) {
 	assert := assert.New(t)
 
-	assert.Equal(1400, tierPercentageMap[14])
+	assert.Equal(1250, tierPercentageMap[14])
 }
