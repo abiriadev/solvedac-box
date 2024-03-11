@@ -40,7 +40,7 @@ func (user User) Render() (string, error) {
 	buf.WriteString(user.Bio + "\n")
 	pbl := GistWidth - runewidth.StringWidth(rating) - 1
 	pb := drawProgressBar(pbl, 0.8)
-	buf.WriteString("%s %s", pb, rating)
+	buf.WriteString(fmt.Sprintf("%s %s", pb, rating))
 
 	return buf.String(), nil
 }
