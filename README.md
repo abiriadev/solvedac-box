@@ -1,9 +1,15 @@
 <p align="center"><img src="./assets/box.png" alt="gist box picture" width="500"></p>
 
 <h1 align="center">Solved.ac Box</h1>
+
+<p align="center"><img alt="GitHub forks" src="https://img.shields.io/github/forks/abiriadev/solvedac-box?style=flat-square&logo=github&color=17ce3a"> <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/abiriadev/solvedac-box/update.yaml?style=flat-square&logo=github&label=Update&color=17ce3a">
+ <img alt="GitHub Gist last commit" src="https://img.shields.io/github/gist/last-commit/7f2692a91fbddcafd096d52d28f799c5?style=flat-square&logo=github&label=Gist%20updated&color=17ce3a">
+
 <p align="center">
   📊 <a href="https://solved.ac">Solved.ac</a>의 프로필 정보를 GitHub Gist로 보여주는 GitHub Action 📊
 </p>
+
+---
 
 ## 🎒 사전 준비
 
@@ -29,4 +35,3 @@
 [![GitHub](https://img.shields.io/github/license/abiriadev/pia?color=17ce3a&style=for-the-badge)](./LICENSE)
 
 _<sub>Special thanks to [BOJ](https://www.acmicpc.net/) and [@solved-ac](https://github.com/solved-ac)</sub>_
-
