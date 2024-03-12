@@ -11,6 +11,9 @@
 
 ---
 
+> [!TIP]
+> You can find the English README [here](./README.en.md).
+
 ## 🎒 사전 준비
 
 1. [새 GitHub PAT 토큰 생성 페이지](https://github.com/settings/personal-access-tokens/new)에서 `Gists`를 `Read and write`로 변경하고 생성 후 생성된 토큰 저장
