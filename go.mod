@@ -5,7 +5,7 @@ go 1.22.1
 require (
 	github.com/dustin/go-humanize v1.0.1
 	github.com/google/go-github/v60 v60.0.0
-	github.com/imroc/req/v3 v3.43.0
+	github.com/imroc/req/v3 v3.43.4
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/mattn/go-runewidth v0.0.15
 	github.com/stretchr/testify v1.9.0
